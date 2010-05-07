@@ -27,6 +27,7 @@ Contents:
    settings
    faq
    other
+   links_and_references
 
 Indices and tables
 ==================
