@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
     <title>Installation &mdash; Yubico Django Authentication Backend v0.1 documentation</title>
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/default.css" type="text/css" />
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
@@ -17,8 +17,8 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="static/jquery.js"></script>
+    <script type="text/javascript" src="static/doctools.js"></script>
     <link rel="top" title="Yubico Django Authentication Backend v0.1 documentation" href="index.html" />
     <link rel="next" title="Available authentication backends" href="available_authentication_backends.html" />
     <link rel="prev" title="django_yubico – Yubico Django Authentication Backend" href="index.html" /> 
@@ -81,7 +81,7 @@ python manage.py syncdb</blockquote>
 <div class="section" id="step-5-login-to-the-admin-panel-and-add-one-or-more-yubikeys">
 <h2>Step 5: Login to the admin panel and add one or more YubiKeys<a class="headerlink" href="#step-5-login-to-the-admin-panel-and-add-one-or-more-yubikeys" title="Permalink to this headline">¶</a></h2>
 <p>Login to the Django admin panel, visit the <tt class="docutils literal"><span class="pre">Django_yubico</span></tt> application setting and add a new YubiKey for your user account:</p>
-<img alt="_images/add_key.png" src="_images/add_key.png" />
+<img alt="images/add_key.png" src="images/add_key.png" />
 <ul class="simple">
 <li><tt class="docutils literal"><span class="pre">Device</span> <span class="pre">id</span></tt> - the first 12 characters of the token (you can obtain it by generating an OTP and taking first 12 characters)</li>
 <li><tt class="docutils literal"><span class="pre">Client</span> <span class="pre">id</span></tt> - your client id (you can obtain it by visiting the <a class="reference external" href="https://api.yubico.com/get-api-key/">Yubico website</a>)</li>
@@ -90,7 +90,7 @@ python manage.py syncdb</blockquote>
 <li><tt class="docutils literal"><span class="pre">Enabled</span></tt> - You can optionally disable this YubiKey (meaning that you won&#8217;t be able to login using this YubiKey until you enable it)</li>
 </ul>
 <p>When you click save, key should be successfully added and you are almost done.</p>
-<img alt="_images/view_keys.png" src="_images/view_keys.png" />
+<img alt="images/view_keys.png" src="images/view_keys.png" />
 </div>
 <div class="section" id="step-6-enable-the-custom-authentication-backend">
 <h2>Step 6: Enable the custom authentication backend<a class="headerlink" href="#step-6-enable-the-custom-authentication-backend" title="Permalink to this headline">¶</a></h2>
@@ -147,7 +147,7 @@ python manage.py syncdb</blockquote>
                                   title="next chapter">Available authentication backends</a></p>
             <h3>This Page</h3>
             <ul class="this-page-menu">
-              <li><a href="_sources/installation.txt"
+              <li><a href="sources/installation.txt"
                      rel="nofollow">Show Source</a></li>
             </ul>
           <div id="searchbox" style="display: none">
