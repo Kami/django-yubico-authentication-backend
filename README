@@ -1,0 +1,4 @@
+Yubico Django authentication backend - use YubiKey to login to your Django powered application.
+
+Documentation:
+	http://kami.github.com/django-yubico-authentication-backend/
