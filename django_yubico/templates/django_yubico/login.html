@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% block content %}
+<div id="yubikey_login">
+<h1>{% trans 'Yubikey Login' %}</h1>
+{% trans 'Please touch the Yubikey bottom to login.' %}</p>
+<form action="" method="post">{% csrf_token %}
+{{ form.as_p }}
+<p><input type="submit" id="yubikey_login_button" value="{% trans 'Log in' %}" /></p>
+</form>
+</div>
+{% endblock %}
