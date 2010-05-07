@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FAQ &mdash; Yubico Django Authentication Backend v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Yubico Django Authentication Backend v0.1 documentation" href="index.html" />
+    <link rel="next" title="Other" href="other.html" />
+    <link rel="prev" title="Settings" href="settings.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="other.html" title="Other"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="settings.html" title="Settings"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="faq">
+<h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="does-this-module-work-with-django-1-2">
+<h2>Does this module work with Django 1.2?<a class="headerlink" href="#does-this-module-work-with-django-1-2" title="Permalink to this headline">¶</a></h2>
+<p>Yes, this module is tested and should work fine with Django 1.2.</p>
+</div>
+<div class="section" id="does-this-module-support-offline-authentication">
+<h2>Does this module support offline authentication?<a class="headerlink" href="#does-this-module-support-offline-authentication" title="Permalink to this headline">¶</a></h2>
+<p>No, this module depends on the <a class="reference external" href="http://github.com/Kami/python-yubico-client">yubico-python</a> module and only supports the safest, online OTP authentication against Yubico or your own validation servers.</p>
+</div>
+<div class="section" id="can-multiple-users-use-the-same-yubikey-to-log-in">
+<h2>Can multiple users use the same YubiKey to log in?<a class="headerlink" href="#can-multiple-users-use-the-same-yubikey-to-log-in" title="Permalink to this headline">¶</a></h2>
+<p>Yes, the only requirement is that your website account usernames are unique.</p>
+<p>This is required because user must enter his username + OTP to log in.</p>
+<p>If you want more users to share the same YubiKey, it would be the safest to enable the <tt class="docutils literal"><span class="pre">YUBICO_USE_PASSWORD</span></tt> setting (you can read more about the available settings at the <a class="reference external" href="settings.html"><em>Settings</em></a> page).</p>
+</div>
+<div class="section" id="how-can-i-customize-the-login-templates">
+<h2>How can I customize the login templates?<a class="headerlink" href="#how-can-i-customize-the-login-templates" title="Permalink to this headline">¶</a></h2>
+<p>You can customize the login templates by copying the <tt class="docutils literal"><span class="pre">login.html</span></tt> and <tt class="docutils literal"><span class="pre">password.html</span></tt> files from the <tt class="docutils literal"><span class="pre">django_yubico/templates/django_yubico/</span></tt> folder to your Django application templates folder and editing them (you must preserve the directory structure or change the path to the template files in <tt class="docutils literal"><span class="pre">django_yubico/views.py</span></tt>).</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">FAQ</a><ul>
+<li><a class="reference external" href="#does-this-module-work-with-django-1-2">Does this module work with Django 1.2?</a></li>
+<li><a class="reference external" href="#does-this-module-support-offline-authentication">Does this module support offline authentication?</a></li>
+<li><a class="reference external" href="#can-multiple-users-use-the-same-yubikey-to-log-in">Can multiple users use the same YubiKey to log in?</a></li>
+<li><a class="reference external" href="#how-can-i-customize-the-login-templates">How can I customize the login templates?</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="settings.html"
+                                  title="previous chapter">Settings</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="other.html"
+                                  title="next chapter">Other</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/faq.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="other.html" title="Other"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="settings.html" title="Settings"
+             >previous</a> |</li>
+        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Tomaž Muraus.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>

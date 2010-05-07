@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; Yubico Django Authentication Backend v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Yubico Django Authentication Backend v0.1 documentation" href="index.html" />
+    <link rel="next" title="Available authentication backends" href="available_authentication_backends.html" />
+    <link rel="prev" title="django_yubico – Yubico Django Authentication Backend" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="available_authentication_backends.html" title="Available authentication backends"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="django_yubico – Yubico Django Authentication Backend"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="step-1-install-yubico-python-module">
+<h2>Step 1: Install yubico-python module<a class="headerlink" href="#step-1-install-yubico-python-module" title="Permalink to this headline">¶</a></h2>
+<p>This module requires <a class="reference external" href="http://github.com/Kami/python-yubico-client">yubico-python</a> module to work.</p>
+<p>If you don&#8217;t already have it, you can install it from the git repository using this command:</p>
+<div class="highlight-python"><pre>pip install -e git://github.com/Kami/python-yubico-client.git#egg=python-yubico-client</pre>
+</div>
+</div>
+<div class="section" id="step-2-install-this-module">
+<h2>Step 2: Install this module<a class="headerlink" href="#step-2-install-this-module" title="Permalink to this headline">¶</a></h2>
+<p>After the requirements are satisfied you can use the following command to install this module from the git repository:</p>
+<div class="highlight-python"><pre>pip install -e http://github.com/Kami/django-yubico-authentication-backend#egg=django-yubico</pre>
+</div>
+</div>
+<div class="section" id="step-3-add-django-yubico-to-the-installed-apps">
+<h2>Step 3: Add django_yubico to the INSTALLED_APPS<a class="headerlink" href="#step-3-add-django-yubico-to-the-installed-apps" title="Permalink to this headline">¶</a></h2>
+<p>Once the <tt class="docutils literal"><span class="pre">django_yubico</span></tt> is in your Python path, you need to modify the <tt class="docutils literal"><span class="pre">INSTALLED_APPS</span></tt> setting to include the <tt class="docutils literal"><span class="pre">django_yubico</span></tt> module:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="c"># ...,</span>
+    <span class="c"># Third-party</span>
+    <span class="s">&#39;django_yubico&#39;</span><span class="p">,</span>
+    <span class="c"># ...,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-run-syncdb-to-generate-the-necessary-table">
+<h2>Step 4: Run syncdb to generate the necessary table<a class="headerlink" href="#step-4-run-syncdb-to-generate-the-necessary-table" title="Permalink to this headline">¶</a></h2>
+<p>Run syncdb (this will create the database table which holds data about the YubiKeys):</p>
+<blockquote>
+python manage.py syncdb</blockquote>
+</div>
+<div class="section" id="step-5-login-to-the-admin-panel-and-add-one-or-more-yubikeys">
+<h2>Step 5: Login to the admin panel and add one or more YubiKeys<a class="headerlink" href="#step-5-login-to-the-admin-panel-and-add-one-or-more-yubikeys" title="Permalink to this headline">¶</a></h2>
+<p>Login to the Django admin panel, visit the <tt class="docutils literal"><span class="pre">Django_yubico</span></tt> application setting and add a new YubiKey for your user account:</p>
+<img alt="_images/add_key.png" src="_images/add_key.png" />
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">Device</span> <span class="pre">id</span></tt> - the first 12 characters of the token (you can obtain it by generating an OTP and taking first 12 characters)</li>
+<li><tt class="docutils literal"><span class="pre">Client</span> <span class="pre">id</span></tt> - your client id (you can obtain it by visiting the <a class="reference external" href="https://api.yubico.com/get-api-key/">Yubico website</a>)</li>
+<li><tt class="docutils literal"><span class="pre">Secret</span> <span class="pre">key</span></tt>- this field is optional and you only need to specify it if you want to use server response message <cite>HMAC-SHA1 signature verification</cite> (you can obtain it on the same page where you get your client id)</li>
+<li><tt class="docutils literal"><span class="pre">User</span></tt> - The user which will be able to login with this YubiKey (remember that you can map a single YubiKey to multiple users)</li>
+<li><tt class="docutils literal"><span class="pre">Enabled</span></tt> - You can optionally disable this YubiKey (meaning that you won&#8217;t be able to login using this YubiKey until you enable it)</li>
+</ul>
+<p>When you click save, key should be successfully added and you are almost done.</p>
+<img alt="_images/view_keys.png" src="_images/view_keys.png" />
+</div>
+<div class="section" id="step-6-enable-the-custom-authentication-backend">
+<h2>Step 6: Enable the custom authentication backend<a class="headerlink" href="#step-6-enable-the-custom-authentication-backend" title="Permalink to this headline">¶</a></h2>
+<p>To activate this backend you need at least put <tt class="docutils literal"><span class="pre">django_yubico.backends.YubicoBackend</span></tt> line to the <tt class="docutils literal"><span class="pre">AUTHENTICATION_BACKENDS</span></tt> tuple:</p>
+<blockquote>
+<dl class="docutils">
+<dt>AUTHENTICATION_BACKENDS = (</dt>
+<dd>&#8216;django_yubico.backends.YubicoBackend&#8217;,</dd>
+</dl>
+<p>)</p>
+</blockquote>
+<p>For more information about the available backends and how they work, please visit the <tt class="xref docutils literal"><span class="pre">available</span> <span class="pre">authentication</span> <span class="pre">backends</span></tt> page.</p>
+</div>
+<div class="section" id="step-7-load-the-module-urls-py-file">
+<h2>Step 7: Load the module urls.py file<a class="headerlink" href="#step-7-load-the-module-urls-py-file" title="Permalink to this headline">¶</a></h2>
+<p>Put the following line in your <tt class="docutils literal"><span class="pre">urls.py</span></tt> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="s">r&#39;^yubico/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;django_yubico.urls&#39;</span><span class="p">)),</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-8-test-if-everything-works">
+<h2>Step 8: Test if everything works<a class="headerlink" href="#step-8-test-if-everything-works" title="Permalink to this headline">¶</a></h2>
+<p>Visit <a class="reference external" href="http://yourpage.com/yubico/login/">http://yourpage.com/yubico/login/</a> and if everything went ok you should be able to login using your website username, OTP generated by YubiKey and a password.</p>
+<p>By default you need to enter both - first your username and OTP and in the second step, your account password. For more information how to change this behavior, visit the <a class="reference external" href="settings.html"><em>Settings</em></a> page.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Installation</a><ul>
+<li><a class="reference external" href="#step-1-install-yubico-python-module">Step 1: Install yubico-python module</a></li>
+<li><a class="reference external" href="#step-2-install-this-module">Step 2: Install this module</a></li>
+<li><a class="reference external" href="#step-3-add-django-yubico-to-the-installed-apps">Step 3: Add django_yubico to the INSTALLED_APPS</a></li>
+<li><a class="reference external" href="#step-4-run-syncdb-to-generate-the-necessary-table">Step 4: Run syncdb to generate the necessary table</a></li>
+<li><a class="reference external" href="#step-5-login-to-the-admin-panel-and-add-one-or-more-yubikeys">Step 5: Login to the admin panel and add one or more YubiKeys</a></li>
+<li><a class="reference external" href="#step-6-enable-the-custom-authentication-backend">Step 6: Enable the custom authentication backend</a></li>
+<li><a class="reference external" href="#step-7-load-the-module-urls-py-file">Step 7: Load the module urls.py file</a></li>
+<li><a class="reference external" href="#step-8-test-if-everything-works">Step 8: Test if everything works</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">django_yubico</span></tt> &#8211; Yubico Django Authentication Backend</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="available_authentication_backends.html"
+                                  title="next chapter">Available authentication backends</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/installation.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="available_authentication_backends.html" title="Available authentication backends"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="django_yubico – Yubico Django Authentication Backend"
+             >previous</a> |</li>
+        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Tomaž Muraus.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>

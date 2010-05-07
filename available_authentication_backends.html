@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Available authentication backends &mdash; Yubico Django Authentication Backend v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Yubico Django Authentication Backend v0.1 documentation" href="index.html" />
+    <link rel="next" title="Settings" href="settings.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="settings.html" title="Settings"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="available-authentication-backends">
+<h1>Available authentication backends<a class="headerlink" href="#available-authentication-backends" title="Permalink to this headline">¶</a></h1>
+<p>This module offers the following three authentication backends.</p>
+<div class="section" id="yubicobackend">
+<span id="authentication-backends-yubicobackend"></span><h2>YubicoBackend<a class="headerlink" href="#yubicobackend" title="Permalink to this headline">¶</a></h2>
+<p>This is a base backend which must be enabled if you want to use the YubiKey authentication.</p>
+<p>You can enable it by putting the following lines to your <tt class="docutils literal"><span class="pre">settings.py</span></tt> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
+             <span class="s">&#39;django_yubico.backends.YubicoBackend&#39;</span><span class="p">,</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+<p>If you still want to allow other users without a YubiKey to log in, you must enable the <tt class="docutils literal"><span class="pre">django.contrib.auth.backends.ModelBackend</span></tt> as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
+             <span class="s">&#39;django_yubico.backends.YubicoBackend&#39;</span><span class="p">,</span>
+             <span class="s">&#39;django.contrib.auth.backends.ModelBackend&#39;</span><span class="p">,</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yubicobackendstaff">
+<span id="authentication-backends-yubicobackendstaff"></span><h2>YubicoBackendStaff<a class="headerlink" href="#yubicobackendstaff" title="Permalink to this headline">¶</a></h2>
+<p>This backend should be used in combination with the <tt class="docutils literal"><span class="pre">YubicoBackend</span></tt> backend and requires all the staff and super users to use the YubiKey to log in (normal users with or without a YubiKey will still be able to log in using their password):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
+             <span class="s">&#39;django_yubico.backends.YubicoBackend&#39;</span><span class="p">,</span>
+             <span class="s">&#39;django_yubico.backends.YubicoBackendStaff&#39;</span><span class="p">,</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="yubicobackendrequireyubikey">
+<span id="authentication-backends-yubicobackendrequireyubikey"></span><h2>YubicoBackendRequireYubikey<a class="headerlink" href="#yubicobackendrequireyubikey" title="Permalink to this headline">¶</a></h2>
+<p>This backend should also be used in combination with the <tt class="docutils literal"><span class="pre">YubicoBackend</span></tt> backend and requires <strong>all</strong> the users with at least one <strong>active</strong> / <strong>enabled</strong> YubiKey to log in using the YubiKey:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
+             <span class="s">&#39;django_yubico.backends.YubicoBackend&#39;</span><span class="p">,</span>
+             <span class="s">&#39;django_yubico.backends.YubicoBackendRequireYubikey&#39;</span><span class="p">,</span>
+     <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Available authentication backends</a><ul>
+<li><a class="reference external" href="#yubicobackend">YubicoBackend</a></li>
+<li><a class="reference external" href="#yubicobackendstaff">YubicoBackendStaff</a></li>
+<li><a class="reference external" href="#yubicobackendrequireyubikey">YubicoBackendRequireYubikey</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="installation.html"
+                                  title="previous chapter">Installation</a></p>
+            <h4>Next topic</h4>
+            <p class="topless"><a href="settings.html"
+                                  title="next chapter">Settings</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/available_authentication_backends.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="settings.html" title="Settings"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Tomaž Muraus.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>
