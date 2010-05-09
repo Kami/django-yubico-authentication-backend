@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &mdash; Yubico Django Authentication Backend v0.1 documentation</title>
+    <title>Installation &mdash; Yubico Django Authentication Backend v0.2 documentation</title>
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '0.1',
+        VERSION:     '0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="Yubico Django Authentication Backend v0.1 documentation" href="index.html" />
+    <link rel="top" title="Yubico Django Authentication Backend v0.2 documentation" href="index.html" />
     <link rel="next" title="Available authentication backends" href="available_authentication_backends.html" />
     <link rel="prev" title="django_yubico – Yubico Django Authentication Backend" href="index.html" /> 
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="index.html" title="django_yubico – Yubico Django Authentication Backend"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Yubico Django Authentication Backend v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -50,13 +50,19 @@
 <div class="section" id="step-1-install-yubico-python-module">
 <h2>Step 1: Install yubico-python module<a class="headerlink" href="#step-1-install-yubico-python-module" title="Permalink to this headline">¶</a></h2>
 <p>This module requires <a class="reference external" href="http://github.com/Kami/python-yubico-client">yubico-python</a> module to work.</p>
-<p>If you don&#8217;t already have it, you can install it from the git repository using this command:</p>
+<p>If you don&#8217;t already have it, you can install the latest stable version from PyPi:</p>
+<div class="highlight-python"><pre>pip install yubico</pre>
+</div>
+<p>Alternatively, if you are not afraid of bugs and like to live on the edge, you can install latest development version from the git repository:</p>
 <div class="highlight-python"><pre>pip install -e git://github.com/Kami/python-yubico-client.git#egg=python-yubico-client</pre>
 </div>
 </div>
 <div class="section" id="step-2-install-this-module">
 <h2>Step 2: Install this module<a class="headerlink" href="#step-2-install-this-module" title="Permalink to this headline">¶</a></h2>
-<p>After the requirements are satisfied you can use the following command to install this module from the git repository:</p>
+<p>After the requirements are satisfied you can use the following command to install this module from PyPi:</p>
+<div class="highlight-python"><pre>pip install django_yubico</pre>
+</div>
+<p>Alternatively you can also install the latest development version from the git repository:</p>
 <div class="highlight-python"><pre>pip install -e http://github.com/Kami/django-yubico-authentication-backend#egg=django-yubico</pre>
 </div>
 </div>
@@ -141,7 +147,7 @@ python manage.py syncdb</blockquote>
 
             <h4>Previous topic</h4>
             <p class="topless"><a href="index.html"
-                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal docutils literal"><span class="pre">django_yubico</span></tt> &#8211; Yubico Django Authentication Backend</a></p>
+                                  title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">django_yubico</span></tt> &#8211; Yubico Django Authentication Backend</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="available_authentication_backends.html"
                                   title="next chapter">Available authentication backends</a></p>
@@ -179,7 +185,7 @@ python manage.py syncdb</blockquote>
         <li class="right" >
           <a href="index.html" title="django_yubico – Yubico Django Authentication Backend"
              >previous</a> |</li>
-        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Yubico Django Authentication Backend v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

@@ -5,13 +5,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Settings &mdash; Yubico Django Authentication Backend v0.1 documentation</title>
+    <title>Settings &mdash; Yubico Django Authentication Backend v0.2 documentation</title>
     <link rel="stylesheet" href="static/default.css" type="text/css" />
     <link rel="stylesheet" href="static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '#',
-        VERSION:     '0.1',
+        VERSION:     '0.2',
         COLLAPSE_MODINDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -19,7 +19,7 @@
     </script>
     <script type="text/javascript" src="static/jquery.js"></script>
     <script type="text/javascript" src="static/doctools.js"></script>
-    <link rel="top" title="Yubico Django Authentication Backend v0.1 documentation" href="index.html" />
+    <link rel="top" title="Yubico Django Authentication Backend v0.2 documentation" href="index.html" />
     <link rel="next" title="FAQ" href="faq.html" />
     <link rel="prev" title="Available authentication backends" href="available_authentication_backends.html" /> 
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="available_authentication_backends.html" title="Available authentication backends"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Yubico Django Authentication Backend v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -68,6 +68,23 @@ This helps to prevent brute forces attacks when someone gets a valid token or st
 <p>The name of the session key which holds the value of how many times user has entered the wrong password.
 Defaults to <tt class="docutils literal"><span class="pre">yubicodjango_counter</span></tt>.</p>
 </div>
+<div class="section" id="yubico-multi-mode">
+<h2>YUBICO_MULTI_MODE<a class="headerlink" href="#yubico-multi-mode" title="Permalink to this headline">¶</a></h2>
+<p>Defaults to <tt class="xref docutils literal"><span class="pre">False</span></tt>.</p>
+<p>If set to <tt class="xref docutils literal"><span class="pre">True</span></tt> user will need to enter <tt class="docutils literal"><span class="pre">YUBICO_MULTI_NUMBER</span></tt> number of OTPs which were generated in the <tt class="docutils literal"><span class="pre">YUBICO_MULTI_TIMEOUT</span></tt> seconds long time window for a successful validation.</p>
+</div>
+<div class="section" id="yubico-multi-number">
+<h2>YUBICO_MULTI_NUMBER<a class="headerlink" href="#yubico-multi-number" title="Permalink to this headline">¶</a></h2>
+<p>Defaults to <tt class="docutils literal"><span class="pre">3</span></tt>.</p>
+<p>The number of OTPs user will need to enter when multi mode is enabled.</p>
+<p><em>Note: This setting is only applicable is YUBICO_MULTI_MODE is set to True.</em></p>
+</div>
+<div class="section" id="yubico-multi-timeout">
+<h2>YUBICO_MULTI_TIMEOUT<a class="headerlink" href="#yubico-multi-timeout" title="Permalink to this headline">¶</a></h2>
+<p>Defaults to <tt class="docutils literal"><span class="pre">10</span></tt>.</p>
+<p>How many seconds can pass between the time when the first and the last OTP is generated.</p>
+<p><em>Note: This setting is only applicable is YUBICO_MULTI_MODE is set to True.</em></p>
+</div>
 </div>
 
 
@@ -83,6 +100,9 @@ Defaults to <tt class="docutils literal"><span class="pre">yubicodjango_counter<
 <li><a class="reference external" href="#yubikey-password-attempts">YUBIKEY_PASSWORD_ATTEMPTS</a></li>
 <li><a class="reference external" href="#yubikey-session-user">YUBIKEY_SESSION_USER</a></li>
 <li><a class="reference external" href="#yubikey-attempt-counter">YUBIKEY_ATTEMPT_COUNTER</a></li>
+<li><a class="reference external" href="#yubico-multi-mode">YUBICO_MULTI_MODE</a></li>
+<li><a class="reference external" href="#yubico-multi-number">YUBICO_MULTI_NUMBER</a></li>
+<li><a class="reference external" href="#yubico-multi-timeout">YUBICO_MULTI_TIMEOUT</a></li>
 </ul>
 </li>
 </ul>
@@ -127,7 +147,7 @@ Defaults to <tt class="docutils literal"><span class="pre">yubicodjango_counter<
         <li class="right" >
           <a href="available_authentication_backends.html" title="Available authentication backends"
              >previous</a> |</li>
-        <li><a href="index.html">Yubico Django Authentication Backend v0.1 documentation</a> &raquo;</li> 
+        <li><a href="index.html">Yubico Django Authentication Backend v0.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
