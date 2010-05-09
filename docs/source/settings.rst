@@ -32,3 +32,27 @@ YUBIKEY_ATTEMPT_COUNTER
 
 The name of the session key which holds the value of how many times user has entered the wrong password.
 Defaults to ``yubicodjango_counter``.
+
+YUBICO_MULTI_MODE
+~~~~~~~~~~~~~~~~~
+Defaults to ``False``.
+
+If set to ``True`` user will need to enter ``YUBICO_MULTI_NUMBER`` number of OTPs which were generated in the ``YUBICO_MULTI_TIMEOUT`` seconds long time window for a successful validation.
+
+YUBICO_MULTI_NUMBER
+~~~~~~~~~~~~~~~~~~~
+
+Defaults to ``3``.
+
+The number of OTPs user will need to enter when multi mode is enabled.
+
+*Note: This setting is only applicable is YUBICO_MULTI_MODE is set to True.*
+
+YUBICO_MULTI_TIMEOUT
+~~~~~~~~~~~~~~~~~~~~
+
+Defaults to ``10``.
+
+How many seconds can pass between the time when the first and the last OTP is generated.
+
+*Note: This setting is only applicable is YUBICO_MULTI_MODE is set to True.*

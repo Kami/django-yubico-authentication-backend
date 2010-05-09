@@ -7,13 +7,21 @@ Step 1: Install yubico-python module
 
 This module requires yubico-python_ module to work.
 
-If you don't already have it, you can install it from the git repository using this command::
+If you don't already have it, you can install the latest stable version from PyPi::
+
+  pip install yubico
+
+Alternatively, if you are not afraid of bugs and like to live on the edge, you can install latest development version from the git repository::
 
   pip install -e git://github.com/Kami/python-yubico-client.git#egg=python-yubico-client
 
 Step 2: Install this module
 ---------------------------
-After the requirements are satisfied you can use the following command to install this module from the git repository::
+After the requirements are satisfied you can use the following command to install this module from PyPi::
+
+  pip install django_yubico
+  
+Alternatively you can also install the latest development version from the git repository::
 
   pip install -e http://github.com/Kami/django-yubico-authentication-backend#egg=django-yubico
 

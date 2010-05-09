@@ -26,6 +26,7 @@ Contents:
    available_authentication_backends
    settings
    faq
+   changelog
    other
    links_and_references
 
