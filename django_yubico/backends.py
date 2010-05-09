@@ -1,9 +1,14 @@
-from yubico import Yubico, YubicoError
+from yubico.yubico import Yubico
+from yubico.yubico_exceptions import YubicoError
 
+from django.conf import settings
 from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth.models import User, check_password
 
 from models import YubicoKey
+
+# How much time can pass between the time when the first and last OTP is generated
+YUBICO_MULTI_TIMEOUT = getattr(settings, 'YUBICO_MULTI_TIMEOUT', 10)
 
 class YubicoBackend:
 	"""
@@ -12,9 +17,10 @@ class YubicoBackend:
 	def authenticate(self, username = None, otp = None):
 		if not otp:
 			return None
-		
-		device_id = otp[:12]
-		
+
+		count = len(otp)
+		device_id = otp[0][:12]
+
 		try:
 			yubico = YubicoKey.objects.get(user__username = username, \
 									device_id = device_id)
@@ -28,14 +34,16 @@ class YubicoBackend:
 		client = Yubico(yubico.client_id, secret_key)
 		
 		try:
-			status = client.verify(otp)
+			if count > 1:
+				# More then 1 OTP provided, using multi mode
+				status = client.verify_multi(otp_list = otp, max_time_window = YUBICO_MULTI_TIMEOUT)
+			else:
+				status = client.verify(otp[0])
 		except YubicoError:
 			return None
 		
-		print status
-		
 		if not status:
-			return False
+			return None
 		
 		return yubico.user
 	

@@ -4,7 +4,7 @@
 <div id="yubikey_login">
 <h1>{% trans 'Yubikey Login' %}</h1>
 {% trans 'Please touch the Yubikey bottom to login.' %}</p>
-<form action="" method="post">{% csrf_token %}
+<form action="" method="post" onkeypress="return event.keyCode != 13" id="yubico_form">{% csrf_token %}
 {{ form.as_p }}
 <p><input type="submit" id="yubikey_login_button" value="{% trans 'Log in' %}" /></p>
 </form>

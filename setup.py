@@ -29,7 +29,7 @@ setup(name = 'django_yubico',
 	  url = 'http://github.com/Kami/django-yubico-authentication-backend/',
 	  download_url = 'http://github.com/Kami/django-yubico-authentication-backend/downloads/',
 	  packages = ['django_yubico'],
-	  requires = ['yubico(>=1.0)'],
+	  requires = ['yubico(>=1.2)'],
 	  provides = ['django_yubico'],
 	  package_data = {
 		'django_yubico': [
