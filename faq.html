@@ -31,6 +31,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
           <a href="changelog.html" title="Changelog"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -47,6 +50,11 @@
             
   <div class="section" id="faq">
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-yubikey">
+<h2>What is YubiKey?<a class="headerlink" href="#what-is-yubikey" title="Permalink to this headline">¶</a></h2>
+<p><em>From Wikipedia</em>:</p>
+<p>The <a class="reference external" href="http://www.yubico.com/products/yubikey/">YubiKey</a>, manufactured by <a class="reference external" href="http://www.yubico.com/home/index/">Yubico</a>, is a device that acts as a USB keyboard and provides secure authentication by a <a class="reference external" href="http://en.wikipedia.org/wiki/One-time_password">one-time password</a> algorithm.</p>
+</div>
 <div class="section" id="does-this-module-work-with-django-1-2">
 <h2>Does this module work with Django 1.2?<a class="headerlink" href="#does-this-module-work-with-django-1-2" title="Permalink to this headline">¶</a></h2>
 <p>Yes, this module is tested and should work fine with Django 1.2.</p>
@@ -60,6 +68,12 @@
 <p>Yes, the only requirement is that your website account usernames are unique.</p>
 <p>This is required because user must enter his username + OTP to log in.</p>
 <p>If you want more users to share the same YubiKey, it would be the safest to enable the <tt class="docutils literal"><span class="pre">YUBICO_USE_PASSWORD</span></tt> setting (you can read more about the available settings at the <a class="reference external" href="settings.html"><em>Settings</em></a> page).</p>
+</div>
+<div class="section" id="what-is-multi-mode">
+<h2>What is multi mode?<a class="headerlink" href="#what-is-multi-mode" title="Permalink to this headline">¶</a></h2>
+<p>Multi mode allows you to specify how many valid OTPs user must enter for a successful authentication (in &#8220;normal&#8221; mode, user only needs to enter a single valid OTP).</p>
+<p>All those OTPs must be generated in a time window which you specify in the settings (default = 10 seconds).</p>
+<p>This adds extra layer of protection, if for example some one steals a single OTP from you.</p>
 </div>
 <div class="section" id="how-can-i-customize-the-login-templates">
 <h2>How can I customize the login templates?<a class="headerlink" href="#how-can-i-customize-the-login-templates" title="Permalink to this headline">¶</a></h2>
@@ -76,9 +90,11 @@
             <h3><a href="index.html">Table Of Contents</a></h3>
             <ul>
 <li><a class="reference external" href="#">FAQ</a><ul>
+<li><a class="reference external" href="#what-is-yubikey">What is YubiKey?</a></li>
 <li><a class="reference external" href="#does-this-module-work-with-django-1-2">Does this module work with Django 1.2?</a></li>
 <li><a class="reference external" href="#does-this-module-support-offline-authentication">Does this module support offline authentication?</a></li>
 <li><a class="reference external" href="#can-multiple-users-use-the-same-yubikey-to-log-in">Can multiple users use the same YubiKey to log in?</a></li>
+<li><a class="reference external" href="#what-is-multi-mode">What is multi mode?</a></li>
 <li><a class="reference external" href="#how-can-i-customize-the-login-templates">How can I customize the login templates?</a></li>
 </ul>
 </li>
@@ -118,6 +134,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="changelog.html" title="Changelog"
              >next</a> |</li>

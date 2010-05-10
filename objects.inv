@@ -1,3 +1,4 @@
 # Sphinx inventory version 1
 # Project: Yubico Django Authentication Backend
 # Version: 0.2
+django_yubico mod index.html

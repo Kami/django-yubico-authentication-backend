@@ -6,6 +6,11 @@
 :mod:`django_yubico` -- Yubico Django Authentication Backend
 ================================================================
 
+.. module:: django_yubico
+		 :synopsis: Yubico Django Authentication Backend
+
+.. moduleauthor:: Tomaž Muraus
+
 :Author: Tomaž Muraus <kamiREMOVE@k5-storitve.net>
 :Maintainer: Tomaž Muraus <kamiREMOVE@k5-storitve.net>
 :Version: |release|

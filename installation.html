@@ -31,6 +31,9 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li class="right" >
           <a href="available_authentication_backends.html" title="Available authentication backends"
              accesskey="N">next</a> |</li>
         <li class="right" >
@@ -101,14 +104,12 @@ python manage.py syncdb</blockquote>
 <div class="section" id="step-6-enable-the-custom-authentication-backend">
 <h2>Step 6: Enable the custom authentication backend<a class="headerlink" href="#step-6-enable-the-custom-authentication-backend" title="Permalink to this headline">¶</a></h2>
 <p>To activate this backend you need at least put <tt class="docutils literal"><span class="pre">django_yubico.backends.YubicoBackend</span></tt> line to the <tt class="docutils literal"><span class="pre">AUTHENTICATION_BACKENDS</span></tt> tuple:</p>
-<blockquote>
-<dl class="docutils">
-<dt>AUTHENTICATION_BACKENDS = (</dt>
-<dd>&#8216;django_yubico.backends.YubicoBackend&#8217;,</dd>
-</dl>
-<p>)</p>
-</blockquote>
-<p>For more information about the available backends and how they work, please visit the <tt class="xref docutils literal"><span class="pre">available</span> <span class="pre">authentication</span> <span class="pre">backends</span></tt> page.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">AUTHENTICATION_BACKENDS</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s">&#39;django_yubico.backends.YubicoBackend&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>For more information about the available backends and how they work, please visit the <a class="reference external" href="available_authentication_backends.html"><em>Available authentication backends</em></a> page.</p>
 </div>
 <div class="section" id="step-7-load-the-module-urls-py-file">
 <h2>Step 7: Load the module urls.py file<a class="headerlink" href="#step-7-load-the-module-urls-py-file" title="Permalink to this headline">¶</a></h2>
@@ -147,7 +148,7 @@ python manage.py syncdb</blockquote>
 
             <h4>Previous topic</h4>
             <p class="topless"><a href="index.html"
-                                  title="previous chapter"><tt class="docutils literal docutils literal"><span class="pre">django_yubico</span></tt> &#8211; Yubico Django Authentication Backend</a></p>
+                                  title="previous chapter"><tt class="docutils literal docutils literal docutils literal docutils literal docutils literal docutils literal"><span class="pre">django_yubico</span></tt> &#8211; Yubico Django Authentication Backend</a></p>
             <h4>Next topic</h4>
             <p class="topless"><a href="available_authentication_backends.html"
                                   title="next chapter">Available authentication backends</a></p>
@@ -179,6 +180,9 @@ python manage.py syncdb</blockquote>
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
         <li class="right" >
           <a href="available_authentication_backends.html" title="Available authentication backends"
              >next</a> |</li>
