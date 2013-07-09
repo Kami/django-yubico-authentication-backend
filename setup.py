@@ -20,34 +20,34 @@ else:
     raise Exception('Cannot find version in __init__.py')
 fp.close()
 
-setup(name = 'django_yubico',
-	  version = '.' . join(map(str, version)),
-	  description = 'Django Yubico Authentication Backend',
-	  author = 'Tomaž Muraus',
-	  author_email = 'kami@k5-storitve.net',
-	  license = 'GPL',
-	  url = 'http://github.com/Kami/django-yubico-authentication-backend/',
-	  download_url = 'http://github.com/Kami/django-yubico-authentication-backend/downloads/',
-	  packages = ['django_yubico'],
-	  requires = ['yubico(>=1.2)'],
-	  provides = ['django_yubico'],
-	  package_data = {
-		'django_yubico': [
-			'site_media/images/*',
-			'templates/django_yubico/*.html'
-		]
-	},
-	  
-	  classifiers = [
-		  'Development Status :: 3 - Alpha',
-		  'Environment :: Web Environment',
-		  'Framework :: Django',
-		  'Intended Audience :: Developers',
-		  'License :: OSI Approved :: GNU General Public License (GPL)',
-		  'Operating System :: OS Independent',
-		  'Programming Language :: Python',
-		  'Topic :: Internet :: WWW/HTTP',
-		  'Topic :: Security',
-		  'Topic :: Software Development :: Libraries',
-	],
+setup(
+    name='django_yubico',
+    version='.' . join(map(str, version)),
+    description='Django Yubico Authentication Backend',
+    author='Tomaž Muraus',
+    author_email='kami@k5-storitve.net',
+    license='GPL',
+    url='http://github.com/Kami/django-yubico-authentication-backend/',
+    packages=['django_yubico'],
+    requires=['yubico(>=1.2)'],
+    provides=['django_yubico'],
+    package_data={
+        'django_yubico': [
+            'site_media/images/*',
+            'templates/django_yubico/*.html'
+        ]
+    },
+
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GNU General Public License (GPL)',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Security',
+        'Topic :: Software Development :: Libraries',
+    ],
 )
