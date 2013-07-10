@@ -76,5 +76,5 @@ Visit http://yourpage.com/yubico/login/ and if everything went ok you should be 
 By default you need to enter both - first your username and OTP and in the second step, your account password. For more information how to change this behavior, visit the :doc:`settings` page.
 
 .. _yubico-python: http://github.com/Kami/python-yubico-client
-.. _`Yubico website`: https://api.yubico.com/get-api-key/
+.. _`Yubico website`: https://upgrade.yubico.com/getapikey/
 .. _`HMAC-SHA1 signature verification`: http://code.google.com/p/yubikey-val-server-php/wiki/ValidationProtocolV20
