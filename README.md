@@ -5,7 +5,7 @@ application via Yubikey.
 
 ## Documentation
 
-[https://docssourceconfpy.readthedocs.org/en/latest/](https://docssourceconfpy.readthedocs.org/en/latest/)
+[https://django-yubico-authentication-backend.readthedocs.org/en/latest/](https://django-yubico-authentication-backend.readthedocs.org/en/latest/)
 
 ## Supported Django Versions
 
@@ -15,4 +15,5 @@ This module has been tested and it's confirmed to be working with the following 
 * Django 1.1
 * Django 1.2
 * Django 1.3
+* Django 1.4
 * Django 1.5
