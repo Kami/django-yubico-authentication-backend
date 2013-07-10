@@ -6,8 +6,8 @@
 :mod:`django_yubico` -- Yubico Django Authentication Backend
 ================================================================
 
-:Author: Tomaž Muraus <kamiREMOVE@k5-storitve.net>
-:Maintainer: Tomaž Muraus <kamiREMOVE@k5-storitve.net>
+:Author: Tomaz Muraus <tomazREMOVE@tomaz.me>
+:Maintainer: Tomaz Muraus <tomazREMOVE@tomaz.me>
 :Version: |release|
 :Source: github.org_
 :Bug tracker: `http://github.com/issues <http://github.com/Kami/django-yubico-authentication-backend/issues>`_
@@ -21,7 +21,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   
+
    installation
    available_authentication_backends
    settings

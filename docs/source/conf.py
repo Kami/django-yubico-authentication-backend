@@ -174,7 +174,7 @@ htmlhelp_basename = 'YubicoDjangoAuthenticationBackenddoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'YubicoDjangoAuthenticationBackend.tex', u'Yubico Django Authentication Backend Documentation',
-   u'Tomaž Muraus', 'manual'),
+   u'Tomaz Muraus', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
