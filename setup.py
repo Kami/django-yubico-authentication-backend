@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 import os
 import re
-from distutils.core import setup
+from setuptools import setup
 
 version_re = re.compile(
     r'__version__ = (\(.*?\))')
@@ -29,7 +29,9 @@ setup(
     license='BSD',
     url='http://github.com/Kami/django-yubico-authentication-backend/',
     packages=['django_yubico'],
-    requires=['yubico(>=1.2)'],
+    install_requires=[
+        'yubico-client>=1.7,<1.8'
+    ],
     provides=['django_yubico'],
     package_data={
         'django_yubico': [
