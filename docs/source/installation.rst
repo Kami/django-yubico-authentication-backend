@@ -8,7 +8,7 @@ Step 1: Install this module
 You can use the following command to install this module from PyPi::
 
   pip install django_yubico
-  
+
 Alternatively you can also install the latest development version from the git repository::
 
   pip install -e git+https://github.com/Kami/django-yubico-authentication-backend#egg=django-yubico
@@ -31,8 +31,8 @@ Step 3: Run syncdb to generate the necessary table
 Run syncdb (this will create the database table which holds data about the YubiKeys):
 
     python manage.py syncdb
-    
-    
+
+
 Step 4: Login to the admin panel and add one or more YubiKeys
 -----------------------------------------------
 
@@ -51,16 +51,16 @@ When you click save, key should be successfully added and you are almost done.
 .. image:: images/view_keys.png
 
 Step 5: Enable the custom authentication backend
-------------------------------------------------    
+------------------------------------------------
 
 To activate this backend you need at least put ``django_yubico.backends.YubicoBackend`` line to the ``AUTHENTICATION_BACKENDS`` tuple:
 
     AUTHENTICATION_BACKENDS = (
-    		'django_yubico.backends.YubicoBackend',
+            'django_yubico.backends.YubicoBackend',
     )
-    
+
 For more information about the available backends and how they work, please visit the :doc:`available authentication backends` page.
-    
+
 Step 6: Load the module urls.py file
 ----------------------------
 
