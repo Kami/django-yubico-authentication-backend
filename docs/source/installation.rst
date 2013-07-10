@@ -42,7 +42,7 @@ Login to the Django admin panel, visit the ``Django_yubico`` application setting
 
 * ``Device id`` - the first 12 characters of the token (you can obtain it by generating an OTP and taking first 12 characters)
 * ``Client id`` - your client id (you can obtain it by visiting the `Yubico website`_)
-* ``Secret key``- this field is optional and you only need to specify it if you want to use server response message `HMAC-SHA1 signature verification` (you can obtain it on the same page where you get your client id)
+* ``Secret key`` - this field is optional and you only need to specify it if you want the underlying client to verify the server response message HMAC-SHA1 signature (you can obtain it on the same page where you got your client id)
 * ``User`` - The user which will be able to login with this YubiKey (remember that you can map a single YubiKey to multiple users)
 * ``Enabled`` - You can optionally disable this YubiKey (meaning that you won't be able to login using this YubiKey until you enable it)
 
