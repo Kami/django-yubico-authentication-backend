@@ -18,6 +18,11 @@ YUBIKEY_USE_PASSWORD = getattr(settings, 'YUBICO_USE_PASSWORD', True)
 YUBIKEY_SESSION_USER_ID = getattr(settings, 'YUBICO_SESSION_USER_ID',
                                   'yubicodjango_user_id')
 
+# Name of the session key which stores the name of the backend user used to log
+# in.
+YUBIKEY_SESSION_AUTH_BACKEND = getattr(settings, 'YUBICO_SESSION_AUTH_BACKEND',
+                                       'yubicodjango_auth_backend')
+
 # Name of the session key which stores attempt counter
 YUBIKEY_ATTEMPT_COUNTER = getattr(settings, 'YUBIKEY_ATTEMPT_COUNTER',
                                   'yubicodjango_counter')
@@ -44,8 +49,8 @@ def login(request, template_name='django_yubico/login.html',
             if YUBIKEY_USE_PASSWORD:
                 # Dual factor authentication is enabled, user still needs to
                 # enter his password
-                user_id = user.pk
-                request.session[YUBIKEY_SESSION_USER_ID] = user_id
+                request.session[YUBIKEY_SESSION_USER_ID] = user.pk
+                request.session[YUBIKEY_SESSION_AUTH_BACKEND] = user.backend
                 request.session[YUBIKEY_ATTEMPT_COUNTER] = 1
 
                 return HttpResponseRedirect(reverse('yubico_django_password'))
@@ -76,7 +81,10 @@ def password(request, template_name='django_yubico/password.html',
         return HttpResponseRedirect(reverse('yubico_django_login'))
 
     user_id = request.session[YUBIKEY_SESSION_USER_ID]
+    auth_backend = request.session[YUBIKEY_SESSION_AUTH_BACKEND]
+
     user = User.objects.get(pk=user_id)
+    user.backend = auth_backend
 
     if request.method == 'POST':
 
