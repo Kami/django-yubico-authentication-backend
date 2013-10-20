@@ -1,6 +1,15 @@
 Django Yubico Authentication Backend
 ====================================
 
+.. image:: https://badge.fury.io/py/django_yubico.png
+    :target: https://badge.fury.io/py/django_yubico
+
+.. image:: https://secure.travis-ci.org/Kami/django-yubico-authentication-backend.png?branch=master
+        :target: http://travis-ci.org/Kami/django-yubico-authentication-backend
+
+.. image:: https://pypip.in/d/django_yubico/badge.png
+        :target: https://crate.io/packages/django_yubico
+
 This backends allows you to add single or a dual factor auth support to your
 application via Yubikey.
 
