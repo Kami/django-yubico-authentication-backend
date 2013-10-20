@@ -1,4 +1,4 @@
 include LICENSE
-include README.md
+include README.rst
 recursive-include django_yubico/site_media *
 recursive-include django_yubico/templates *
