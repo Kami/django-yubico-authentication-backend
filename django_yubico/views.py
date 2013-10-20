@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login as auth_login
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 
 from django.views.decorators.cache import never_cache
@@ -14,8 +15,8 @@ from forms import LoginForm, PasswordForm
 YUBIKEY_USE_PASSWORD = getattr(settings, 'YUBICO_USE_PASSWORD', True)
 
 # Name of the session key which stores user id
-YUBIKEY_SESSION_USER = getattr(settings, 'YUBICO_SESSION_USER',
-                               'yubicodjango_user')
+YUBIKEY_SESSION_USER_ID = getattr(settings, 'YUBICO_SESSION_USER_ID',
+                                  'yubicodjango_user_id')
 
 # Name of the session key which stores attempt counter
 YUBIKEY_ATTEMPT_COUNTER = getattr(settings, 'YUBIKEY_ATTEMPT_COUNTER',
@@ -43,7 +44,8 @@ def login(request, template_name='django_yubico/login.html',
             if YUBIKEY_USE_PASSWORD:
                 # Dual factor authentication is enabled, user still needs to
                 # enter his password
-                request.session[YUBIKEY_SESSION_USER] = user
+                user_id = user.pk
+                request.session[YUBIKEY_SESSION_USER_ID] = user_id
                 request.session[YUBIKEY_ATTEMPT_COUNTER] = 1
 
                 return HttpResponseRedirect(reverse('yubico_django_password'))
@@ -69,24 +71,27 @@ def password(request, template_name='django_yubico/password.html',
     redirect_to = request.REQUEST.get(redirect_field_name,
                                       settings.LOGIN_REDIRECT_URL)
 
-    if not request.session.get(YUBIKEY_SESSION_USER) or \
+    if not request.session.get(YUBIKEY_SESSION_USER_ID) or \
        not request.session.get(YUBIKEY_ATTEMPT_COUNTER):
         return HttpResponseRedirect(reverse('yubico_django_login'))
 
+    user_id = request.session[YUBIKEY_SESSION_USER_ID]
+    user = User.objects.get(pk=user_id)
+
     if request.method == 'POST':
-        form = PasswordForm(request.POST,
-                            user=request.session[YUBIKEY_SESSION_USER])
+
+        form = PasswordForm(request.POST, user=user)
 
         if form.is_valid():
-            auth_login(request, request.session[YUBIKEY_SESSION_USER])
+            auth_login(request, user)
 
             try:
-                del(request.session[YUBIKEY_SESSION_USER])
+                del request.session[YUBIKEY_SESSION_USER_ID]
             except KeyError:
                 pass
 
             try:
-                del(request.session[YUBIKEY_ATTEMPT_COUNTER])
+                del request.session[YUBIKEY_ATTEMPT_COUNTER]
             except KeyError:
                 pass
 
@@ -99,11 +104,11 @@ def password(request, template_name='django_yubico/password.html',
                YUBIKEY_PASSWORD_ATTEMPTS:
                 # Maximum number of attemps has been reached. Require user to
                 # start from scratch.
-                del(request.session[YUBIKEY_SESSION_USER])
-                del(request.session[YUBIKEY_ATTEMPT_COUNTER])
+                del request.session[YUBIKEY_SESSION_USER_ID]
+                del request.session[YUBIKEY_ATTEMPT_COUNTER]
                 return HttpResponseRedirect(reverse('yubico_django_login'))
     else:
-        form = PasswordForm(user=request.session[YUBIKEY_SESSION_USER])
+        form = PasswordForm(user=user)
 
     dictionary = {'form': form, redirect_field_name: redirect_to}
     return render_to_response(template_name, dictionary,
