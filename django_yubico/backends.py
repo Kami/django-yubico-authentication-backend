@@ -3,18 +3,20 @@ from yubico.yubico_exceptions import YubicoError
 
 from django.conf import settings
 from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth.models import User, check_password
+from django.contrib.auth.models import User
 
 from models import YubicoKey
 
-# How much time can pass between the time when the first and last OTP is generated
+# How much time can pass between the time when the first and last OTP is
+# generated
 YUBICO_MULTI_TIMEOUT = getattr(settings, 'YUBICO_MULTI_TIMEOUT', 10)
 
-class YubicoBackend:
+
+class YubicoBackend(object):
     """
     This backend requires a valid username and OTP from user to login.
     """
-    def authenticate(self, username = None, otp = None):
+    def authenticate(self, username=None, otp=None):
         if not otp:
             return None
 
@@ -22,8 +24,8 @@ class YubicoBackend:
         device_id = otp[0][:12]
 
         try:
-            yubico = YubicoKey.objects.get(user__username = username, \
-                                    device_id = device_id)
+            yubico = YubicoKey.objects.get(user__username=username,
+                                           device_id=device_id)
         except YubicoKey.DoesNotExist:
             return None
 
@@ -36,7 +38,9 @@ class YubicoBackend:
         try:
             if count > 1:
                 # More then 1 OTP provided, using multi mode
-                status = client.verify_multi(otp_list = otp, max_time_window = YUBICO_MULTI_TIMEOUT)
+                status = client.verify_multi(otp_list=otp,
+                                             max_time_window=
+                                             YUBICO_MULTI_TIMEOUT)
             else:
                 status = client.verify(otp[0])
         except YubicoError:
@@ -49,9 +53,10 @@ class YubicoBackend:
 
     def get_user(self, user_id):
         try:
-            return User.objects.get(pk = user_id)
+            return User.objects.get(pk=user_id)
         except User.DoesNotExist:
             return None
+
 
 class YubicoBackendStaff(ModelBackend):
     """
@@ -66,15 +71,17 @@ class YubicoBackendStaff(ModelBackend):
         else:
             return user
 
+
 class YubicoBackendRequireYubikey(ModelBackend):
     """
     If this backend is enabled, each user with at least one active YubiKey
     must enter a valid OTP to log in.
     """
     def authenticate(self, *args, **kwargs):
-        user = super(YubicoBackendRequireYubikey, self).authenticate(*args, **kwargs)
+        user = super(YubicoBackendRequireYubikey, self).authenticate(*args,
+                                                                     **kwargs)
 
-        if user and user.yubicokey_set.filter(enabled = True).count():
+        if user and user.yubicokey_set.filter(enabled=True).count():
             return None
         else:
             return user
