@@ -23,7 +23,7 @@ fp.close()
 setup(
     name='django_yubico',
     version='.' . join(map(str, version)),
-    description='Django Yubico Authentication Backend',
+    description='Yubico Yubikey authentication backend for Django',
     author='Tomaz Muraus',
     author_email='tomaz+pypi@tomaz.me',
     license='BSD',
