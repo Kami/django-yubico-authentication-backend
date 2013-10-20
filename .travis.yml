@@ -1,0 +1,15 @@
+language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "pypy"
+
+install:
+ - pip install -r requirements-travis.txt
+
+script: 
+  - flake8 django_yubico/
+
+notifications:
+  email:
+    - tomaz+travisci@tomaz.me
