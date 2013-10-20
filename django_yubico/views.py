@@ -60,8 +60,7 @@ def login(request, template_name='django_yubico/login.html',
 
                 return HttpResponseRedirect(reverse('yubico_django_password'))
             else:
-                auth_login(request, user)
-
+                auth_login(request=request, user=user)
                 return HttpResponseRedirect(redirect_to)
     else:
         form = LoginForm()
@@ -95,11 +94,10 @@ def password(request, template_name='django_yubico/password.html',
     user.backend = auth_backend
 
     if request.method == 'POST':
-
         form = PasswordForm(request.POST, user=user)
 
         if form.is_valid():
-            auth_login(request, user)
+            auth_login(request=request, user=user)
             reset_user_session(session=request.session)
             return HttpResponseRedirect(redirect_to)
         else:
