@@ -1,5 +1,5 @@
-from yubico.yubico import Yubico
-from yubico.yubico_exceptions import YubicoError
+from yubico_client.yubico import Yubico
+from yubico_client.yubico_exceptions import YubicoError
 
 from django.conf import settings
 from django.contrib.auth.backends import ModelBackend
